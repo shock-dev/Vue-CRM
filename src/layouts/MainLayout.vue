@@ -1,10 +1,14 @@
 <template>
   <div class="app-main-layout">
-    <navbar/>
+    <navbar
+      @toggleSidebar="isOpen = !isOpen"
+    />
 
-    <sidebar/>
+    <sidebar
+      :isOpen="isOpen"
+    />
 
-    <main class="app-content">
+    <main class="app-content" :class="{full: !isOpen}">
       <div class="app-page">
         <router-view/>
       </div>
@@ -23,7 +27,12 @@ import Navbar from "@/components/app/Navbar";
 import Sidebar from "@/components/app/Sidebar";
 export default {
 name: "MainLayout",
-  components: {Sidebar, Navbar}
+  components: {Sidebar, Navbar},
+  data() {
+    return {
+      isOpen: true
+    }
+  }
 }
 </script>
 
