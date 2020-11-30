@@ -2,7 +2,7 @@
   <nav class="navbar orange lighten-1">
     <div class="nav-wrapper">
       <div class="navbar-left">
-        <a href="#" @click.prevent="toggleSidebar">
+        <a href="#" @click.prevent="$emit('toggleSidebar')">
           <i class="material-icons black-text">dehaze</i>
         </a>
         <span class="black-text">12.12.12</span>
@@ -14,6 +14,7 @@
               class="dropdown-trigger black-text"
               href="#"
               data-target="dropdown"
+              ref="dropdown"
           >
             USER NAME
             <i class="material-icons right">arrow_drop_down</i>
@@ -21,13 +22,13 @@
 
           <ul id='dropdown' class='dropdown-content'>
             <li>
-              <a href="#" class="black-text">
+              <router-link :to="{name: 'profile'}" class="black-text">
                 <i class="material-icons">account_circle</i>Профиль
-              </a>
+              </router-link>
             </li>
             <li class="divider" tabindex="-1"></li>
             <li>
-              <a href="#" class="black-text">
+              <a class="black-text" @click.prevent="logout">
                 <i class="material-icons">assignment_return</i>Выйти
               </a>
             </li>
@@ -42,9 +43,14 @@
 export default {
   name: "Navbar",
   methods: {
-    toggleSidebar() {
-      this.$emit('toggleSidebar')
+    logout() {
+      this.$router.push('/login')
     }
+  },
+  mounted() {
+    window.M.Dropdown.init(this.$refs.dropdown, {
+      constrainWidth: true
+    })
   }
 }
 </script>
