@@ -1,36 +1,67 @@
 <template>
-  <form class="card auth-card">
+  <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
       <span class="card-title">Домашняя бухгалтерия</span>
       <div class="input-field">
         <input
             id="email"
             type="text"
+            v-model.trim="email"
+            :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
         >
         <label for="email">Email</label>
-        <small class="helper-text invalid">Email</small>
+        <small
+            v-if="$v.email.$dirty && !$v.email.required"
+            class="helper-text invalid"
+        >
+          Поле Email должно быть заполнено
+        </small>
+        <small
+            v-else-if="$v.email.$dirty && !$v.email.email"
+            class="helper-text invalid"
+        >
+          Введите корректный email
+        </small>
       </div>
       <div class="input-field">
         <input
             id="password"
             type="password"
-            class="validate"
+            v-model.trim="password"
+            :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.$dirty && !$v.password.minLength)}"
         >
         <label for="password">Пароль</label>
-        <small class="helper-text invalid">Password</small>
+        <small
+            v-if="$v.password.$dirty && !$v.password.required"
+            class="helper-text invalid"
+        >
+          Введите пароль
+        </small>
+        <small
+            v-else-if="$v.password.$dirty && !$v.password.minLength"
+            class="helper-text invalid"
+        >
+          Пароль должен содержать минимум 6 символов. Сейчас {{ password.length }}
+        </small>
       </div>
       <div class="input-field">
         <input
             id="name"
             type="text"
-            class="validate"
+            v-model="name"
+            :class="{invalid: $v.name.$dirty && !$v.name.required}"
         >
         <label for="name">Имя</label>
-        <small class="helper-text invalid">Name</small>
+        <small
+            v-if="$v.name.$dirty && !$v.name.required"
+            class="helper-text invalid"
+        >
+          Введите ваше имя
+        </small>
       </div>
       <p>
         <label>
-          <input type="checkbox" />
+          <input type="checkbox" v-model="agree">
           <span>С правилами согласен</span>
         </label>
       </p>
@@ -48,15 +79,60 @@
 
       <p class="center">
         Уже есть аккаунт?
-        <a href="/">Войти!</a>
+        <router-link :to="{name: 'login'}">Войти!</router-link>
       </p>
     </div>
   </form>
 </template>
 
 <script>
+import {email, minLength, required} from "vuelidate/lib/validators";
+
 export default {
-name: "Register"
+  name: "Register",
+  data() {
+    return {
+      email: '',
+      password: '',
+      name: '',
+      agree: false
+    }
+  },
+  validations: {
+    email: {
+      email,
+      required
+    },
+    password: {
+      required,
+      minLength: minLength(6)
+    },
+    name: {
+      required
+    },
+    agree: {
+      checked: v => v
+    }
+  },
+  methods: {
+    submitHandler() {
+      if (this.$v.$invalid) {
+        this.$v.$touch()
+
+        return
+      }
+
+      const formDate = {
+        email: this.email,
+        password: this.password,
+        name: this.name
+      }
+
+      console.log(formDate)
+
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
