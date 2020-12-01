@@ -11,7 +11,9 @@
     <loader v-if="loading" />
 
     <div v-else class="row">
-      <home-bill/>
+      <home-bill
+        :rates="currently.rates"
+      />
 
       <home-currently/>
     </div>
@@ -30,6 +32,10 @@ export default {
       loading: true,
       currently: null
     }
+  },
+  async mounted() {
+    this.currently = await this.$store.dispatch('fetchCurrently')
+    this.loading = false
   }
 }
 </script>

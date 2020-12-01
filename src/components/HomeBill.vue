@@ -14,7 +14,8 @@
 
 <script>
 export default {
-name: "HomeBill"
+  name: "HomeBill",
+  props: ['rates']
 }
 </script>
 
