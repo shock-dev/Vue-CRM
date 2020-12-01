@@ -115,7 +115,7 @@ export default {
     }
   },
   methods: {
-    submitHandler() {
+    async submitHandler() {
       if (this.$v.$invalid) {
         this.$v.$touch()
 
@@ -128,9 +128,12 @@ export default {
         name: this.name
       }
 
-      console.log(formDate)
-
-      this.$router.push('/')
+      try {
+        await this.$store.dispatch('register', formDate)
+        this.$router.push('/')
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }
