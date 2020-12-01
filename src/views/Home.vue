@@ -15,7 +15,10 @@
         :rates="currently.rates"
       />
 
-      <home-currently/>
+      <home-currently
+          :rates="currently.rates"
+          :date="currently.date"
+      />
     </div>
   </div>
 </template>
