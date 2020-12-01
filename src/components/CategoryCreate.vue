@@ -11,11 +11,11 @@
               id="name"
               type="text"
               v-model="title"
-              :class="{invalid: ($v.title.$dirty && !$v.title.required)}"
+              :class="{invalid: $v.title.$dirty && !$v.title.required}"
           >
           <label for="name">Название</label>
           <span
-              v-if="$v.title.dirty && $v.title.required"
+              v-if="$v.title.$dirty && !$v.title.required"
               class="helper-text invalid"
           >
             Введите название категории
@@ -27,14 +27,14 @@
               id="limit"
               type="number"
               v-model="limit"
-              :class="{invalid: ($v.limit.$dirty && !$v.title.minValue)}"
+              :class="{invalid: $v.limit.$dirty && !$v.limit.minValue}"
           >
           <label for="limit">Лимит</label>
           <span
-              v-if="$v.limit.$dirty && !$v.title.minValue"
+              v-if="$v.limit.$dirty && !$v.limit.minValue"
               class="helper-text invalid"
           >
-            Минимальная величина
+            Минимальная величина 100
           </span>
         </div>
 
@@ -55,14 +55,16 @@ export default {
   data() {
     return {
       title: '',
-      limit: 1
+      limit: 100
     }
+  },
+  mounted() {
+    window.M.updateTextFields();
   },
   methods: {
     submitHandler() {
-      if (this.$v.invalid) {
+      if (this.$v.$invalid) {
         this.$v.$touch()
-
         return
       }
     }
@@ -72,7 +74,7 @@ export default {
       required
     },
     limit: {
-      minValue: minValue(1)
+      minValue: minValue(100)
     }
   }
 }
