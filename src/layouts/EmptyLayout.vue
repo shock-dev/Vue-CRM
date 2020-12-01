@@ -5,8 +5,19 @@
 </template>
 
 <script>
+import messages from "@/utils/messages";
+import { mapGetters } from 'vuex'
+
 export default {
-  name: "EmptyLayout"
+  name: "EmptyLayout",
+  computed: {
+    ...mapGetters(['error'])
+  },
+  watch: {
+    error(fb) {
+      this.$error(messages[fb.code] || 'Что-то пошло не так')
+    }
+  }
 }
 </script>
 
