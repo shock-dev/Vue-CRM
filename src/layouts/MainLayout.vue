@@ -1,23 +1,26 @@
 <template>
-  <div class="app-main-layout">
-    <navbar
-      @toggleSidebar="isOpen = !isOpen"
-    />
+  <div>
+    <loader v-if="loading"/>
+    <div v-else class="app-main-layout">
+      <navbar
+          @toggleSidebar="isOpen = !isOpen"
+      />
 
-    <sidebar
-      :isOpen="isOpen"
-    />
+      <sidebar
+          :isOpen="isOpen"
+      />
 
-    <main class="app-content" :class="{full: !isOpen}">
-      <div class="app-page">
-        <router-view/>
+      <main class="app-content" :class="{full: !isOpen}">
+        <div class="app-page">
+          <router-view/>
+        </div>
+      </main>
+
+      <div class="fixed-action-btn">
+        <router-link class="btn-floating btn-large blue" :to="{name: 'record'}">
+          <i class="large material-icons">add</i>
+        </router-link>
       </div>
-    </main>
-
-    <div class="fixed-action-btn">
-      <router-link class="btn-floating btn-large blue" :to="{name: 'record'}">
-        <i class="large material-icons">add</i>
-      </router-link>
     </div>
   </div>
 </template>
@@ -32,13 +35,16 @@ name: "MainLayout",
   components: {Sidebar, Navbar},
   data() {
     return {
-      isOpen: true
+      isOpen: true,
+      loading: true
     }
   },
   async mounted() {
     if (!Object.keys(this.info).length) {
       await this.loadInfo()
     }
+
+    this.loading = false
   },
   computed: {
     ...mapGetters([
