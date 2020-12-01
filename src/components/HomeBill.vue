@@ -9,7 +9,7 @@
             :key="item"
             class="currency-line"
         >
-          <span>{{ getCurrency(item) }}</span>
+          <span>{{ getCurrency(item) | currency(item) }}</span>
         </p>
       </div>
     </div>

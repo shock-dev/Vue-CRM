@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuelidate from "vuelidate/src";
 import App from './App.vue'
 import dateFilter from "@/filters/date.filter";
+import currencyFilter from "@/filters/currency.filter";
 import router from './router'
 import store from './store'
 import messagePlugin from '@/utils/message.plugin'
@@ -17,8 +18,11 @@ Vue.config.productionTip = false
 
 Vue.use(Vuelidate)
 Vue.use(messagePlugin)
+
 Vue.component('Loader', Loader)
+
 Vue.filter('date', dateFilter)
+Vue.filter('currency', currencyFilter)
 
 const config = {
   apiKey: "AIzaSyCW1aQwVLf_Qpp5JNkrjB0g9Sht0eq2o10",
