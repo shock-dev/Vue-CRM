@@ -3,7 +3,7 @@
     <div class="page-title">
       <h3>Счет</h3>
 
-      <button class="btn waves-effect waves-light btn-small">
+      <button class="btn waves-effect waves-light btn-small" @click="refresh">
         <i class="material-icons">refresh</i>
       </button>
     </div>
@@ -39,6 +39,13 @@ export default {
   async mounted() {
     this.currently = await this.$store.dispatch('fetchCurrently')
     this.loading = false
+  },
+  methods: {
+    async refresh() {
+      this.loading = true
+      this.currently = await this.$store.dispatch('fetchCurrently')
+      this.loading = false
+    }
   }
 }
 </script>
