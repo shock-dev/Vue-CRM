@@ -8,7 +8,9 @@
       </button>
     </div>
 
-    <div class="row">
+    <loader v-if="loading" />
+
+    <div v-else class="row">
       <home-bill/>
 
       <home-currently/>
@@ -19,9 +21,16 @@
 <script>
 import HomeBill from "@/components/HomeBill";
 import HomeCurrently from "@/components/HomeCurrently";
+
 export default {
   name: "Home",
-  components: {HomeCurrently, HomeBill}
+  components: {HomeCurrently, HomeBill},
+  data() {
+    return {
+      loading: true,
+      currently: null
+    }
+  }
 }
 </script>
 
