@@ -11,7 +11,9 @@
 
         <category-create/>
 
-        <category-edit/>
+        <category-edit
+          :categories="categories"
+        />
 
       </div>
     </section>
