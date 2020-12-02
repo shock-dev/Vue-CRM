@@ -22,6 +22,16 @@ export default {
                 commit('setError', e)
                 throw e
             }
+        },
+        async loadRecordById({dispatch}, id) {
+            try {
+                const uid = await dispatch('getUid')
+                const record = (await firebase.database().ref(`/users/${uid}/records`).child(id).once('value')).val() || {}
+
+                return {...record, id}
+            } catch (e) {
+                console.log(e)
+            }
         }
     }
 }

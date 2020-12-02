@@ -1,32 +1,52 @@
 <template>
   <div>
-    <div>
+    <loader v-if="loading"/>
+    <div v-else-if="record">
       <div class="breadcrumb-wrap">
-        <a href="/history" class="breadcrumb">История</a>
+        <router-link :to="{name: 'history'}" class="breadcrumb">История</router-link>
         <a class="breadcrumb">
-          Расход
+          {{ record.text }}
         </a>
       </div>
       <div class="row">
         <div class="col s12 m6">
-          <div class="card red">
+          <div class="card" :class="record.color">
             <div class="card-content white-text">
-              <p>Описание:</p>
-              <p>Сумма:</p>
-              <p>Категория:</p>
+              <p>Описание: {{ record.description }}</p>
+              <p>Сумма: {{ record.amount }}</p>
+              <p>Категория: {{ record.categoryName }}</p>
 
-              <small>12.12.12</small>
+              <small>{{ new Date(record.date) | date }}</small>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <p v-else class="center">Такой записи не существует.</p>
   </div>
 </template>
 
 <script>
 export default {
-name: "DetailRecord"
+  name: "DetailRecord",
+  data: () => ({
+    record: null,
+    loading: true
+  }),
+  async mounted() {
+    const id = this.$route.params.id
+    const record = await this.$store.dispatch('loadRecordById', id)
+    const category = await this.$store.dispatch('loadCategoryById', record.categoryId)
+
+    this.record = {
+      ...record,
+      categoryName: category.title,
+      color: record.type === 'income' ? 'green' : 'red',
+      text: record.type === 'income' ? 'Доход' : 'Расход'
+    }
+
+    this.loading = false
+  }
 }
 </script>
 
