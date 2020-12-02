@@ -5,7 +5,7 @@
         <h4>Редактировать</h4>
       </div>
 
-      <form>
+      <form @submit.prevent="submitHandler">
         <div class="input-field" >
           <select ref="select" v-model="current">
             <option
@@ -109,6 +109,30 @@ export default {
   beforeDestroy() {
     if (this.select && this.select.destroy) {
       this.select.destroy()
+    }
+  },
+  methods: {
+    async submitHandler() {
+      if (this.$v.$invalid) {
+        this.$v.$touch()
+        return
+      }
+
+      const categoryData = {
+        id: this.current,
+        title: this.title,
+        limit: this.limit
+      }
+
+      try {
+        await this.$store.dispatch('updateCategory', categoryData)
+
+        this.$emit('updated', categoryData)
+
+        this.$message('Категория успешно обновлена')
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }

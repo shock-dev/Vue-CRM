@@ -69,10 +69,12 @@ export default {
       }
 
       try {
-        await this.$store.dispatch('createCategory', {
+        const newCategory = await this.$store.dispatch('createCategory', {
           title: this.title,
           limit: this.limit
         })
+
+        this.$emit('created', newCategory)
 
         this.title = ''
         this.limit = 100
