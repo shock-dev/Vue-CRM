@@ -7,6 +7,7 @@ import router from './router'
 import store from './store'
 import messagePlugin from '@/utils/message.plugin'
 import Loader from "@/components/app/Loader";
+import tooltipDirective from "@/directives/tooltip.directive"
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
 
@@ -23,6 +24,8 @@ Vue.component('Loader', Loader)
 
 Vue.filter('date', dateFilter)
 Vue.filter('currency', currencyFilter)
+
+Vue.directive('tooltip', tooltipDirective)
 
 const config = {
   apiKey: "AIzaSyCW1aQwVLf_Qpp5JNkrjB0g9Sht0eq2o10",
