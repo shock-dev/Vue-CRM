@@ -29,6 +29,7 @@
 import Navbar from "@/components/app/Navbar";
 import Sidebar from "@/components/app/Sidebar";
 import {mapGetters, mapActions} from 'vuex';
+import messages from "@/utils/messages";
 
 export default {
 name: "MainLayout",
@@ -48,13 +49,19 @@ name: "MainLayout",
   },
   computed: {
     ...mapGetters([
-        'info'
+      'info',
+      'error'
     ])
   },
   methods: {
       ...mapActions([
           'loadInfo'
       ])
+  },
+  watch: {
+    error(fb) {
+      this.$error(messages[fb.code] || 'Что-то пошло не так')
+    }
   }
 }
 </script>
