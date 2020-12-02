@@ -87,7 +87,7 @@ export default {
   mounted() {
     window.M.updateTextFields();
 
-    this.select = window.M.FormSelect.init(this.$refs.select, {})
+    this.select = window.M.FormSelect.init(this.$refs.select)
   },
   watch: {
     current(catId) {
@@ -106,7 +106,7 @@ export default {
       minValue: minValue(100)
     }
   },
-  beforeDestroy() {
+  destroyed() {
     if (this.select && this.select.destroy) {
       this.select.destroy()
     }

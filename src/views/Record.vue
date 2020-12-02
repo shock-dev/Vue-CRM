@@ -4,11 +4,17 @@
       <h3>Новая запись</h3>
     </div>
 
-    <form class="form">
+    <loader v-if="loading" />
+
+    <p v-else-if="!categories.length" class="center">Категорий пока нет. <router-link :to="{name: 'categories'}">Добавить категорию</router-link></p>
+
+    <form v-else class="form">
       <div class="input-field" >
-        <select>
+        <select ref="select">
           <option
-          >name cat</option>
+              v-for="cat in categories"
+              :key="cat.id"
+          >{{ cat.title }}</option>
         </select>
         <label>Выберите категорию</label>
       </div>
@@ -66,7 +72,26 @@
 
 <script>
 export default {
-  name: "Record"
+  name: "Record",
+  data: () => ({
+    select: null,
+    loading: true,
+    categories: []
+
+  }),
+  async mounted() {
+    this.categories = await this.$store.dispatch('loadCategories')
+    this.loading = false
+
+    setTimeout(() => {
+      this.select = window.M.FormSelect.init(this.$refs.select)
+    }, 0)
+  },
+  destroyed() {
+    if (this.select && this.select.destroy) {
+      this.select.destroy()
+    }
+  }
 }
 </script>
 
