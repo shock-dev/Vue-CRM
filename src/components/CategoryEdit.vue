@@ -7,7 +7,7 @@
 
       <form>
         <div class="input-field" >
-          <select>
+          <select ref="select">
             <option>Category</option>
           </select>
           <label>Выберите категорию</label>
@@ -39,7 +39,18 @@
 
 <script>
 export default {
-name: "CategoryEdit"
+  name: "CategoryEdit",
+  data: () => ({
+    select: null
+  }),
+  mounted() {
+    this.select = window.M.FormSelect.init(this.$refs.select, {})
+  },
+  beforeDestroy() {
+    if (this.select && this.select.destroy) {
+      this.select.destroy()
+    }
+  }
 }
 </script>
 

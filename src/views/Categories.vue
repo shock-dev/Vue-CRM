@@ -34,8 +34,6 @@ export default {
   async mounted() {
     this.categories = await this.$store.dispatch('loadCategories')
     this.loading = false
-
-    console.log(this.categories)
   }
 }
 </script>
