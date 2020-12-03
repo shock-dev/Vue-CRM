@@ -11,6 +11,9 @@
   "Limit": "Limit",
   "Sum": "amount",
   "Description": "description",
+  "Planning": "Planning",
+  "Excess_by": "Excess by",
+  "remained": "Remained",
 
   "Menu__Bill": "Bill",
   "Menu__History": "History",

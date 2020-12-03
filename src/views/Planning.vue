@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Планирование</h3>
+      <h3>{{ 'Planning' | localize }}</h3>
       <h4>{{ info.bill | currency }}</h4>
     </div>
 
@@ -33,6 +33,7 @@
 <script>
 import {mapGetters} from 'vuex'
 import currencyFilter from '@/filters/currency.filter'
+import localize from "@/filters/localize.filter";
 
 export default {
   name: "Planning",
@@ -66,7 +67,7 @@ export default {
               : 'red'
 
       const tooltipValue = cat.limit - spent
-      const tooltip = `${tooltipValue < 0 ? 'Превышение на ' : 'Осталось '} ${currencyFilter(Math.abs(tooltipValue))}`
+      const tooltip = `${tooltipValue < 0 ? localize('Excess_by') : localize('remained')} ${currencyFilter(Math.abs(tooltipValue))}`
 
       return {
         ...cat,

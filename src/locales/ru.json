@@ -11,6 +11,9 @@
   "Limit": "Лимит",
   "Sum": "Сумма",
   "Description": "Описание",
+  "Planning": "Планирование",
+  "Excess_by": "Превышение на",
+  "remained": "Осталось",
 
   "Menu__Bill": "Счет",
   "Menu__History": "История",
