@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>История записей</h3>
+      <h3>{{ 'record_history' | localize }}</h3>
     </div>
 
     <div class="history-chart">
@@ -10,7 +10,7 @@
 
     <loader v-if="loading"/>
 
-    <p v-else-if="!records.length" class="center">Записей пока нет.</p>
+    <p v-else-if="!records.length" class="center">{{ 'NoOneRecord' | localize }}</p>
 
     <section v-else>
       <history-table
@@ -21,8 +21,8 @@
           v-model="page"
           :page-count="pageCount"
           :click-handler="pageChange"
-          :prev-text="'Назад'"
-          :next-text="'Вперед'"
+          :prev-text="'Previous' | localize"
+          :next-text="'Next' | localize"
           :container-class="'pagination'"
           :page-class="'waves-effect'"
       />
@@ -35,6 +35,7 @@
 import HistoryTable from "@/components/HistoryTable";
 import paginationMixin from '@/mixins/pagination.mixin'
 import {Pie} from 'vue-chartjs'
+import localize from "@/filters/localize.filter";
 
 export default {
   name: "History",
@@ -52,7 +53,7 @@ export default {
           ...record,
           categoryName: categories.find(c => c.id === record.categoryId).title,
           typeClass: record.type === 'income' ? 'green' : 'red',
-          typeText: record.type === 'income' ? 'Доход' : 'Рассход'
+          typeText: record.type === 'income' ? localize('Income') : localize('Expense')
         }
       }))
 
