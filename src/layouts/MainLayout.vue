@@ -8,6 +8,7 @@
 
       <sidebar
           :isOpen="isOpen"
+          :key="locate"
       />
 
       <main class="app-content" :class="{full: !isOpen}">
@@ -51,7 +52,10 @@ name: "MainLayout",
     ...mapGetters([
       'info',
       'error'
-    ])
+    ]),
+    locate() {
+      return this.$store.getters.info.locale
+    }
   },
   methods: {
       ...mapActions([

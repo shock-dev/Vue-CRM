@@ -12,10 +12,10 @@
             v-model="name"
             :class="{invalid: $v.name.$dirty && !$v.name.required}"
         >
-        <label for="description">Имя</label>
+        <label for="description">{{ 'Name' | localize }}</label>
         <span
             v-if="$v.name.$dirty && !$v.name.required"
-            class="helper-text invalid">Введите имя</span>
+            class="helper-text invalid">{{ 'EnterName' | localize }}</span>
       </div>
 
       <div class="switch">
@@ -28,7 +28,7 @@
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        Обновить
+        {{ 'Refresh' | localize }}
         <i class="material-icons right">send</i>
       </button>
     </form>

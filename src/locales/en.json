@@ -1,3 +1,21 @@
 {
-  "ProfileTitle": "Profile"
+  "ProfileTitle": "Profile",
+  "Name": "Name",
+  "EnterName": "Enter name",
+  "Refresh": "Refresh",
+
+  "Menu__Bill": "Bill",
+  "Menu__History": "History",
+  "Menu__Planning": "Planning",
+  "Menu__NewRecord": "Create record",
+  "Menu__Categories": "Categories",
+
+  "NoOneCategory": "you don't have a category.",
+  "Edit": "Edit",
+  "Create": "Create",
+  "Title": "Title",
+  "Limit": "Limit",
+  "Enter_category_title": "Enter title of category",
+  "Min_value": "Min value is",
+  "Choose_category": "choose category"
 }
