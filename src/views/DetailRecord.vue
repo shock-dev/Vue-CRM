@@ -3,7 +3,7 @@
     <loader v-if="loading"/>
     <div v-else-if="record">
       <div class="breadcrumb-wrap">
-        <router-link :to="{name: 'history'}" class="breadcrumb">История</router-link>
+        <router-link :to="{name: 'history'}" class="breadcrumb">{{ 'Menu__History' | localize }}</router-link>
         <a class="breadcrumb">
           {{ record.text }}
         </a>
@@ -12,9 +12,9 @@
         <div class="col s12 m6">
           <div class="card" :class="record.color">
             <div class="card-content white-text">
-              <p>Описание: {{ record.description }}</p>
-              <p>Сумма: {{ record.amount }}</p>
-              <p>Категория: {{ record.categoryName }}</p>
+              <p>{{ 'Description' | localize }}: {{ record.description }}</p>
+              <p>{{ 'Sum' | localize }}: {{ record.amount }}</p>
+              <p>{{ 'Category' | localize }}: {{ record.categoryName }}</p>
 
               <small>{{ new Date(record.date) | date }}</small>
             </div>
@@ -22,11 +22,13 @@
         </div>
       </div>
     </div>
-    <p v-else class="center">Такой записи не существует.</p>
+    <p v-else class="center">{{ 'No_record' | localize }}</p>
   </div>
 </template>
 
 <script>
+import localize from "@/filters/localize.filter";
+
 export default {
   name: "DetailRecord",
   data: () => ({
@@ -42,7 +44,7 @@ export default {
       ...record,
       categoryName: category.title,
       color: record.type === 'income' ? 'green' : 'red',
-      text: record.type === 'income' ? 'Доход' : 'Расход'
+      text: record.type === 'income' ?  localize('Income') : localize('Expense')
     }
 
     this.loading = false

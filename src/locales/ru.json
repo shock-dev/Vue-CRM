@@ -23,6 +23,10 @@
   "Previous": "Назад",
   "Next": "Вперед",
   "Check_record": "Посмотреть запись",
+  "Account_in_currency": "Счет в валюте",
+  "Exchange_rate": "Курс валют",
+  "Course": "Курс",
+  "Currency": "Валюта",
 
   "Menu__Bill": "Счет",
   "Menu__History": "История",
@@ -30,6 +34,7 @@
   "Menu__NewRecord": "Новая запись",
   "Menu__Categories": "Категории",
 
+  "No_record": "Такой записи не существует",
   "NoOneRecord": "У вас нет ни одной записи.",
   "NoOneCategory": "У вас нет ни одной категории.",
   "Enter_category_title": "Введите название категории",

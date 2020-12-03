@@ -23,6 +23,10 @@
   "Previous": "Previous",
   "Next": "Next",
   "Check_record": "Check record",
+  "Account_in_currency": "Account in currency",
+  "Exchange_rate": "Exchange rate",
+  "Course": "Course",
+  "Currency": "Currency",
 
   "Menu__Bill": "Bill",
   "Menu__History": "History",
@@ -30,6 +34,7 @@
   "Menu__NewRecord": "Create record",
   "Menu__Categories": "Categories",
 
+  "No_record": "There is no such record.",
   "NoOneRecord": "You don't have a record.",
   "NoOneCategory": "You don't have a category.",
   "Enter_category_title": "Enter title of category",
