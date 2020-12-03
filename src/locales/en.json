@@ -27,6 +27,9 @@
   "Exchange_rate": "Exchange rate",
   "Course": "Course",
   "Currency": "Currency",
+  "Register": "Registration",
+  "Login": "Login",
+  "Details": "Details",
 
   "Menu__Bill": "Bill",
   "Menu__History": "History",

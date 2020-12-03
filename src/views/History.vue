@@ -42,6 +42,11 @@ export default {
   components: {HistoryTable},
   extends: Pie,
   mixins: [paginationMixin],
+  metaInfo() {
+    return {
+      title: this.$title('Menu__History')
+    }
+  },
   data: () => ({
     loading: true,
     records: []

@@ -30,6 +30,11 @@ import HomeCurrently from "@/components/HomeCurrently";
 export default {
   name: "Home",
   components: {HomeCurrently, HomeBill},
+  metaInfo() {
+    return {
+      title: this.$title('Menu__Bill')
+    }
+  },
   data() {
     return {
       loading: true,

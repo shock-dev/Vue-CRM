@@ -27,6 +27,9 @@
   "Exchange_rate": "Курс валют",
   "Course": "Курс",
   "Currency": "Валюта",
+  "Register": "Регистрация",
+  "Login": "Войти",
+  "Details": "Просмотр записи",
 
   "Menu__Bill": "Счет",
   "Menu__History": "История",

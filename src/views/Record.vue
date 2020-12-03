@@ -92,6 +92,11 @@ import {mapGetters} from 'vuex';
 
 export default {
   name: "Record",
+  metaInfo() {
+    return {
+      title: this.$title('Menu__NewRecord')
+    }
+  },
   data: () => ({
     select: null,
     loading: true,

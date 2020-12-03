@@ -31,6 +31,11 @@ import localize from "@/filters/localize.filter";
 
 export default {
   name: "DetailRecord",
+  metaInfo() {
+    return {
+      title: this.$title('Details')
+    }
+  },
   data: () => ({
     record: null,
     loading: true
