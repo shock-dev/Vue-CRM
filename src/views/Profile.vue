@@ -21,7 +21,7 @@
       <div class="switch">
         <label>
           En
-          <input type="checkbox">
+          <input type="checkbox" v-model="isRuLocale">
           <span class="lever"></span>
           Ru
         </label>
@@ -42,10 +42,12 @@ import {required} from 'vuelidate/lib/validators'
 export default {
   name: "Profile",
   data: () => ({
-    name: ''
+    name: '',
+    isRuLocale: true
   }),
   mounted() {
     this.name = this.info.name
+    this.isRuLocale = this.info.locale === 'ru-RU'
 
     setTimeout(() => {
       window.M.updateTextFields();
@@ -60,7 +62,10 @@ export default {
       }
 
       try {
-        await this.$store.dispatch('updateInfo', {name: this.name})
+        await this.$store.dispatch('updateInfo', {
+          name: this.name,
+          locale: this.isRuLocale ? 'ru-RU' : 'en-US'
+        })
       } catch (e) {
         console.log(e)
       }
