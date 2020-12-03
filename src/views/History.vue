@@ -17,7 +17,14 @@
         :records="records"
       />
 
-      <Paginate/>
+      <Paginate
+          :page-count="20"
+          :click-handler="pageChange"
+          :prev-text="'Назад'"
+          :next-text="'Вперед'"
+          :container-class="'pagination'"
+          :page-class="'waves-effect'"
+      />
 
     </section>
   </div>
@@ -47,6 +54,11 @@ name: "History",
     })
 
     this.loading = false
+  },
+  methods: {
+    pageChange() {
+
+    }
   }
 }
 </script>
