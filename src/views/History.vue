@@ -14,11 +14,12 @@
 
     <section v-else>
       <history-table
-        :records="records"
+        :records="items"
       />
 
       <Paginate
-          :page-count="20"
+          v-model="page"
+          :page-count="pageCount"
           :click-handler="pageChange"
           :prev-text="'Назад'"
           :next-text="'Вперед'"
@@ -32,33 +33,30 @@
 
 <script>
 import HistoryTable from "@/components/HistoryTable";
+import paginationMixin from '@/mixins/pagination.mixin'
+
 export default {
-name: "History",
+  name: "History",
   components: {HistoryTable},
+  mixins: [paginationMixin],
   data: () => ({
     loading: true,
-    records: [],
-    categories: []
+    records: []
   }),
   async mounted() {
-    const records = await this.$store.dispatch('loadRecords')
-    this.categories = await this.$store.dispatch('loadCategories')
+    this.records = await this.$store.dispatch('loadRecords')
+    const categories = await this.$store.dispatch('loadCategories')
 
-    this.records = records.map(record => {
+    this.setupPagination(this.records.map(record => {
       return {
         ...record,
-        categoryName: this.categories.find(c => c.id === record.categoryId).title,
+        categoryName: categories.find(c => c.id === record.categoryId).title,
         typeClass: record.type === 'income' ? 'green' : 'red',
         typeText: record.type === 'income' ? 'Доход' : 'Рассход'
       }
-    })
+    }))
 
     this.loading = false
-  },
-  methods: {
-    pageChange() {
-
-    }
   }
 }
 </script>
