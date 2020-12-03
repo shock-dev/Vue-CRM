@@ -3,6 +3,7 @@ import Vuelidate from "vuelidate/src";
 import App from './App.vue'
 import dateFilter from "@/filters/date.filter";
 import currencyFilter from "@/filters/currency.filter";
+import localize from '@/filters/localize.filter'
 import router from './router'
 import store from './store'
 import messagePlugin from '@/utils/message.plugin'
@@ -26,6 +27,7 @@ Vue.component('Paginate', Paginate)
 
 Vue.filter('date', dateFilter)
 Vue.filter('currency', currencyFilter)
+Vue.filter('localize', localize)
 
 Vue.directive('tooltip', tooltipDirective)
 
