@@ -3,6 +3,14 @@
   "Name": "Имя",
   "EnterName": "Введите имя",
   "Refresh": "Обновить",
+  "Edit": "Редактировать",
+  "Create": "Создать",
+  "Title": "Название",
+  "Income": "доход",
+  "Expenses": "расходы",
+  "Limit": "Лимит",
+  "Sum": "Сумма",
+  "Description": "Описание",
 
   "Menu__Bill": "Счет",
   "Menu__History": "История",
@@ -11,11 +19,9 @@
   "Menu__Categories": "Категории",
 
   "NoOneCategory": "У вас нет ни одной категории.",
-  "Edit": "Редактировать",
-  "Create": "Создать",
-  "Title": "Название",
-  "Limit": "Лимит",
   "Enter_category_title": "Введите название категории",
   "Min_value": "Минимальная величина",
-  "Choose_category": "Выберите категорию"
+  "Choose_category": "Выберите категорию",
+  "Enter_description_record": "Введите описание",
+  "New_record": "Новая запись"
 }

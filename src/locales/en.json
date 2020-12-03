@@ -3,6 +3,14 @@
   "Name": "Name",
   "EnterName": "Enter name",
   "Refresh": "Refresh",
+  "Edit": "Edit",
+  "Create": "Create",
+  "Title": "Title",
+  "Income": "income",
+  "Expenses": "expenses",
+  "Limit": "Limit",
+  "Sum": "amount",
+  "Description": "description",
 
   "Menu__Bill": "Bill",
   "Menu__History": "History",
@@ -11,11 +19,9 @@
   "Menu__Categories": "Categories",
 
   "NoOneCategory": "you don't have a category.",
-  "Edit": "Edit",
-  "Create": "Create",
-  "Title": "Title",
-  "Limit": "Limit",
   "Enter_category_title": "Enter title of category",
   "Min_value": "Min value is",
-  "Choose_category": "choose category"
+  "Choose_category": "choose category",
+  "Enter_description_record": "Enter description",
+  "New_record": "New record"
 }

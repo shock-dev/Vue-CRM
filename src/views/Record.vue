@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Новая запись</h3>
+      <h3>{{ 'New_record' | localize }}</h3>
     </div>
 
     <loader v-if="loading" />
@@ -17,7 +17,7 @@
               :value="cat.id"
           >{{ cat.title }}</option>
         </select>
-        <label>Выберите категорию</label>
+        <label>{{ 'Choose_category' | localize }}</label>
       </div>
 
       <p>
@@ -29,7 +29,7 @@
               value="income"
               v-model="type"
           />
-          <span>Доход</span>
+          <span>{{ 'Income' | localize }}</span>
         </label>
       </p>
 
@@ -42,7 +42,7 @@
               value="outcome"
               v-model="type"
           />
-          <span>Расход</span>
+          <span>{{ 'Expenses' | localize }}</span>
         </label>
       </p>
 
@@ -53,12 +53,12 @@
             v-model.number="amount"
             :class="{invalid: $v.amount.$dirty && !$v.amount.minValue}"
         >
-        <label for="amount">Сумма</label>
+        <label for="amount">{{ 'amount' | localize }}</label>
         <span
             v-if="$v.amount.$dirty && !$v.amount.minValue"
             class="helper-text invalid"
         >
-            Минимальная величина 1
+            {{ 'Min_value' | localize }} 1
           </span>
       </div>
 
@@ -69,17 +69,17 @@
             v-model="description"
             :class="{invalid: $v.description.$dirty && !$v.description.required}"
         >
-        <label for="description">Описание</label>
+        <label for="description">{{ 'Description' | localize }}</label>
         <span
             v-if="$v.description.$dirty && !$v.description.required"
             class="helper-text invalid"
         >
-            Введите описание
+            {{ 'Enter_description_record' | localize }}
           </span>
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        Создать
+        {{ 'Create' | localize }}
         <i class="material-icons right">send</i>
       </button>
     </form>
