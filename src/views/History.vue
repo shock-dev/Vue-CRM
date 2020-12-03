@@ -16,6 +16,9 @@
       <history-table
         :records="records"
       />
+
+      <Paginate/>
+
     </section>
   </div>
 </template>

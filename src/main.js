@@ -8,6 +8,7 @@ import store from './store'
 import messagePlugin from '@/utils/message.plugin'
 import Loader from "@/components/app/Loader";
 import tooltipDirective from "@/directives/tooltip.directive"
+import Paginate from 'vuejs-paginate'
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
 
@@ -21,6 +22,7 @@ Vue.use(Vuelidate)
 Vue.use(messagePlugin)
 
 Vue.component('Loader', Loader)
+Vue.component('Paginate', Paginate)
 
 Vue.filter('date', dateFilter)
 Vue.filter('currency', currencyFilter)
